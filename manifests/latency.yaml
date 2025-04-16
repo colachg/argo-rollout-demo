@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: latency-analysis
+spec:
+  args:
+  - name: ingress-name
+  metrics:
+  - name: p99
+    interval: 1m
+    successCondition: result[0] <= 5 # milliseconds
+    count: 2
+    failureLimit: 1
+    provider:
+      prometheus:
+        address: http://prometheus-kube-prometheus-prometheus.monitoring:9090
+        query: |
+          histogram_quantile(0.99, sum by(le) (rate(nginx_ingress_controller_request_duration_seconds_bucket{
+            ingress="{{args.ingress-name}}"
+          }[2m]))) * 1000
