@@ -2,6 +2,10 @@
 
 A local demo environment for [Argo Rollouts](https://argoproj.github.io/argo-rollouts/) featuring Nginx Ingress Controller and Prometheus monitoring.
 
+![grafana](./screenshots/grafana.jpeg)
+![prometheus](./screenshots/rollouts-demo.jpeg)
+![rollouts-demo](./screenshots/rollouts-demo-dashboard.jpeg)
+
 ## Overview
 
 This project provides a complete development environment to demonstrate progressive delivery capabilities using Argo Rollouts, with:
