@@ -18,6 +18,11 @@ spec:
           securityContext:
             runAsUser: 1000
             allowPrivilegeEscalation: false
+      containers:
+        - name: argocd-server
+          volumeMounts:
+            - name: extensions
+              mountPath: /tmp/extensions/
       volumes:
         - name: extensions
           emptyDir: {}

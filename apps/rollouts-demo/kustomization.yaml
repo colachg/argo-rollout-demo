@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
   - rollout-demo.yaml
-  # - namespace.yaml
   - rollout.yaml
   - service.yaml
   - ingress.yaml
