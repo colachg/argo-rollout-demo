@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: rollouts-demo
+  namespace: rollouts-demo
 spec:
   replicas: 5
   strategy:
@@ -27,7 +28,7 @@ spec:
       - pause: {duration: 3m}
       - setWeight: 80
       - pause: {duration: 5m}
-  revisionHistoryLimit: 2
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: rollouts-demo

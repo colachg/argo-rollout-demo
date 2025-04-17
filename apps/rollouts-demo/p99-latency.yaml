@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: latency-analysis
+  namespace: rollouts-demo
 spec:
   args:
   - name: ingress-name
