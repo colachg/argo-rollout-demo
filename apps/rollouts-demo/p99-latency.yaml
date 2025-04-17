@@ -6,7 +6,6 @@ metadata:
 spec:
   args:
   - name: ingress-name
-  - name: namespace
   metrics:
   - name: p99
     interval: 1m
@@ -17,7 +16,4 @@ spec:
       prometheus:
         address: http://prometheus-kube-prometheus-prometheus.prometheus:9090
         query: |
-          histogram_quantile(0.99, sum by(le) (rate(nginx_ingress_controller_request_duration_seconds_bucket{
-            namespace=~"{{args.namespace}}",
-            ingress=~"{{args.ingress-name}}"
-          }[2m]))) * 1000
+          histogram_quantile(0.99, sum by(le) (rate(nginx_ingress_controller_request_duration_seconds_bucket{ingress=~"{{args.ingress-name}}"}[1m]))) * 1000

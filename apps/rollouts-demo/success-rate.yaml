@@ -6,15 +6,14 @@ metadata:
 spec:
   args:
   - name: ingress-name
-  - name: namespace
   metrics:
   - name: success-rate
-    interval: 2m
-    successCondition: result[0] >= 95.00
+    interval: 1m
+    successCondition: result[0] >= 0.95
     failureLimit: 3
     provider:
       prometheus:
         address: http://prometheus-kube-prometheus-prometheus.prometheus:9090
         query: |
-          sum(rate(nginx_ingress_controller_requests{namespace=~"{{args.namespace}}", ingress=~"{{args.ingress-name}}", status!~"[4-5].*"}[2m])) /
-          sum(rate(nginx_ingress_controller_requests{namespace=~"{{args.namespace}}", ingress=~"{{args.ingress-name}}"}[2m])) * 100
+          sum(rate(nginx_ingress_controller_requests{ingress=~"{{args.ingress-name}}", status!~"[4-5].*"}[1m])) /
+          sum(rate(nginx_ingress_controller_requests{ingress=~"{{args.ingress-name}}"}[1m]))

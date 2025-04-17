@@ -14,8 +14,6 @@ spec:
         args:
         - name: ingress-name
           value: rollouts-demo
-        - name: namespace
-          value: rollouts-demo
       steps:
       - setWeight: 20
       - pause: {duration: 2m}
@@ -25,8 +23,6 @@ spec:
           - templateName: latency-analysis
           args:
           - name: ingress-name
-            value: rollouts-demo
-          - name: namespace
             value: rollouts-demo
       - setWeight: 60
       - pause: {duration: 3m}
