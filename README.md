@@ -43,9 +43,9 @@ kubectl apply -k argocd
 ### 3. Install kube-prometheus-stack, Nginx Ingress Controller and Argo Rollouts using ArgoCD
 
 ```bash
+kubectl apply -k apps/argo-rollouts
 kubectl apply -k apps/kube-prometheus-stack
 kubectl apply -k apps/nginx-ingress-controller
-kubectl apply -k apps/argo-rollouts
 ```
 
 ### 4. Deploy Demo Applications
@@ -142,7 +142,7 @@ kubectl argo rollouts promote rollouts-demo
 
 ## Troubleshooting
 
-- **Ingress controller not responding**: Check if ingress controller is running with `kubectl get pods -n ingress-nginx`
+- **kube-prometheus-stack failed to sync on ArgoCD**: Select the out-of-sync application and click on the "Sync" button with "Replace" strategy.
 - **Metrics not showing in Prometheus**: Verify ServiceMonitor resources are correctly configured
 
 ## Resources

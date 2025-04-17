@@ -9,9 +9,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: "https://github.com/argoproj/argo-rollouts"
+    - repoURL: "https://github.com/colachg/argo-rollout-demo"
       path: apps/rollouts-demo
       targetRevision: HEAD
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true

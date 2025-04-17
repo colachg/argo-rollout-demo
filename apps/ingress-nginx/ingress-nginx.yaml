@@ -23,5 +23,8 @@ spec:
                   release: prometheus # same to the prometheus release name
                 enabled: true
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
